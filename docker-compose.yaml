@@ -1,0 +1,38 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile-server
+    ports: ["5050:5050"]
+    depends_on: [mongo]
+    networks: [ostad-m5]
+    image: aureri/ostad-server:latest
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile-UI
+    ports: ["5173:5173"]
+    depends_on: [backend]
+    networks: [ostad-m5]
+    image: aureri/ostad-ui:latest
+
+  mongo:
+    image: mongo
+    env_file: [.mongo.env]
+    ports: ["27017:27017"]
+    volumes: [mongo-data:/data/db]
+    networks: [ostad-m5]
+
+  mongo-express:
+    image: mongo-express
+    ports: ["8081:8081"]
+    env_file: [.mongo-express.env]
+    depends_on: [mongo]
+    networks: [ostad-m5]
+
+volumes:
+  mongo-data:
+
+networks:
+  ostad-m5:
