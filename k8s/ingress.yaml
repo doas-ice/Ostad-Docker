@@ -4,29 +4,22 @@ metadata:
   name: ostad-ingress
   namespace: mohammad-ullah
   annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
+  ingressClassName: nginx
   rules:
     - host: app.local
       http:
         paths:
-          - path: ^/$
-            pathType: ImplementationSpecific
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: ostad-ui
                 port:
                   number: 5173
-          - path: ^/dash(/|$)(.*)
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: ostad-ui
-                port:
-                  number: 5173
-          - path: ^/admin(/|$)(.*)
-            pathType: ImplementationSpecific
+          - path: /admin
+            pathType: Prefix
             backend:
               service:
                 name: mongo-express
