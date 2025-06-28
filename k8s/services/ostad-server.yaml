@@ -10,5 +10,5 @@ spec:
   ports:
     - name: ostad-server
       protocol: TCP
-      port: 8000
-      targetPort: 8000
+      port: 5050
+      targetPort: 5050

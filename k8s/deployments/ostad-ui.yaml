@@ -25,3 +25,14 @@ spec:
               memory: "512Mi"
           ports:
             - containerPort: 5173
+          env:
+            - name: VITE_API_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: vite-config
+                  key: VITE_API_HOST
+            - name: VITE_API_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: vite-config
+                  key: VITE_API_PORT
