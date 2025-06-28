@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
+const API_HOST = import.meta.env.VITE_API_HOST;
+const API_PORT = import.meta.env.VITE_API_PORT;
+
+const API_URL = `${API_HOST}${API_PORT ? `:${API_PORT}` : ''}`;
+
 const App = () => {
   const [students, setStudents] = useState([
     {
@@ -20,7 +25,7 @@ const App = () => {
   // Fetch registered students
   const fetchStudents = async () => {
     try {
-      const response = await fetch("http://localhost:5050/getStudents");
+      const response = await fetch(`${API_URL}/getStudents`);
       const data = await response.json();
       setStudents(data);
     } catch (error) {
@@ -45,7 +50,7 @@ const handleSubmit = async (e) => {
 
   // Use toast.promise
   toast.promise(
-    fetch("http://localhost:5050/addStudent", {
+    fetch(`${API_URL}/addStudent`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
