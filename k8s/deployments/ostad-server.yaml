@@ -16,6 +16,7 @@ spec:
       containers:
         - name: ostad-server
           image: aureri/ostad-server
+          imagePullPolicy: Always
           resources:
             requests:
               cpu: "100m"
