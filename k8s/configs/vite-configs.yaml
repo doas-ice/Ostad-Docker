@@ -4,5 +4,5 @@ metadata:
   name: vite-config
   namespace: mohammad-ullah
 data:
-  VITE_API_HOST: "http://ostad-server"
+  VITE_API_HOST: "https://ostad-server"
   VITE_API_PORT: ""
