@@ -5,4 +5,4 @@ metadata:
   namespace: mohammad-ullah
 data:
   VITE_API_HOST: "http://ostad-server"
-  VITE_API_PORT: "5050"
+  VITE_API_PORT: ""

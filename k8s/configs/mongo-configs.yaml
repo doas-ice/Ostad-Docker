@@ -5,3 +5,4 @@ metadata:
   namespace: mohammad-ullah
 data:
   MONGO_SERVER: "mongo"
+  ME_BASEURL: "/admin/"

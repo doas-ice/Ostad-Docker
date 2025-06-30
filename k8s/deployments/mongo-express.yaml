@@ -41,3 +41,8 @@ spec:
                 configMapKeyRef:
                   name: mongo-config
                   key: MONGO_SERVER
+            - name: ME_CONFIG_SITE_BASEURL
+              valueFrom:
+                configMapKeyRef:
+                  name: mongo-config
+                  key: ME_BASEURL

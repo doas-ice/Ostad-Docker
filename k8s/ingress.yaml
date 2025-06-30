@@ -4,9 +4,14 @@ metadata:
   name: ostad-ingress
   namespace: mohammad-ullah
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - app.local
+        - ostad-server
+      secretName: app-local-tls
   rules:
     - host: app.local
       http:
@@ -25,3 +30,13 @@ spec:
                 name: mongo-express
                 port:
                   number: 8081
+    - host: ostad-server
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ostad-server
+                port:
+                  number: 5050
