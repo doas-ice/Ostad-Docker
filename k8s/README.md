@@ -124,8 +124,18 @@ k8s/
 **Ingress config**  
 
 - `nginx.ingress.kubernetes.io/ssl-redirect: "true"` annotation to force HTTPS
-- Host `app.local/` is forwarded to ostad-ui, `app.local/admin/` is forwarded to mongo-express
-- Host `ostad-server` is forwarded to ostad-server backend, this is to allow access within frontend when accessing from a web browser
+- HTTPS Setup done using TLS for hosts `app.local` and `ostad-server` with Certificate and Keys stored in k8s secret `app-local-tls`
+
+```yaml
+  tls:
+    - hosts:
+        - app.local
+        - ostad-server
+      secretName: app-local-tls
+```
+  
+- Host `app.local/` is forwarded to ostad-ui port 5173, `app.local/admin/` is forwarded to mongo-express port 8081
+- Host `ostad-server` is forwarded to ostad-server backend port 5050, this is to allow access within frontend when accessing from a web browser
 
 ---
 
