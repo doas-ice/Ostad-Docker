@@ -196,6 +196,21 @@ helm create ostad-stack
 
 **Umbrella Chart Values:**
 ```yaml
+# ostad-stack/Chart.yaml
+dependencies:
+  - name: mongo
+    version: 0.1.0
+    repository: "file://../mongo"
+  - name: mongo-express
+    version: 0.1.0
+    repository: "file://../mongo-express"
+  - name: ostad-server
+    version: 0.1.0
+    repository: "file://../ostad-server"
+  - name: ostad-ui
+    version: 0.1.0
+    repository: "file://../ostad-ui"
+
 # ostad-stack/values.yaml
 mongo:
   nameOverride: "mongo"
