@@ -46,7 +46,7 @@ mongo-express:
   service:
     type: NodePort
     port: 8081
-    nodePort: 30081
+    nodePort: 30090
   resources:
     limits:
       cpu: 500m
@@ -86,7 +86,7 @@ ostad-server:
   service:
     type: NodePort
     port: 5050
-    nodePort: 30050
+    nodePort: 30070
   resources:
     limits:
       cpu: 500m
@@ -108,7 +108,7 @@ ostad-ui:
   service:
     type: NodePort
     port: 5173
-    nodePort: 30000
+    nodePort: 30060
   resources:
     limits:
       cpu: 500m
