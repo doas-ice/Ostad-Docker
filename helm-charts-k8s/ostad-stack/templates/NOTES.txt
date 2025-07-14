@@ -1,0 +1,48 @@
+# Ostad Stack Deployment Complete!
+
+## Deployed Services:
+
+### Web Interface (Ostad UI)
+- **NodePort**: 30000
+- **Internal Port**: 5173
+- **Access**: http://<node-ip>:30000
+
+### API Server (Ostad Server)
+- **NodePort**: 30050
+- **Internal Port**: 5050
+- **Access**: http://<node-ip>:30050
+
+### Database (MongoDB)
+- **NodePort**: 30017
+- **Internal Port**: 27017
+- **Access**: mongodb://<node-ip>:30017
+
+### Database Admin (Mongo Express)
+- **NodePort**: 30081
+- **Internal Port**: 8081
+- **Access**: http://<node-ip>:30081
+
+## Get Node IP:
+```bash
+kubectl get nodes -o jsonpath="{.items[0].status.addresses[0].address}"
+```
+
+## Check Service Status:
+```bash
+kubectl get services -n {{ .Release.Namespace }}
+```
+
+## View Logs:
+```bash
+# Ostad UI
+kubectl logs -n {{ .Release.Namespace }} -l app.kubernetes.io/name=ostad-ui
+
+# Ostad Server
+kubectl logs -n {{ .Release.Namespace }} -l app.kubernetes.io/name=ostad-server
+
+# MongoDB
+kubectl logs -n {{ .Release.Namespace }} -l app.kubernetes.io/name=mongo
+
+# Mongo Express
+kubectl logs -n {{ .Release.Namespace }} -l app.kubernetes.io/name=mongo-express
+```

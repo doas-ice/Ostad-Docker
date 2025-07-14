@@ -1,0 +1,12 @@
+crds:
+  install: true
+
+addressPools:
+  - name: default
+    protocol: layer2
+    addresses:
+      - 10.0.1.240-10.0.1.250
+
+l2Advertisements:
+  - ipAddressPools:
+      - default
